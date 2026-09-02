@@ -454,7 +454,9 @@ export const loveStory: LoveStoryConfig = {
 
   // Add track files under /public/music and reference them here, e.g. "/music/our-song.mp3"
   // Leave empty to gracefully disable the music player.
-  musicTracks: [],
+  musicTracks: [
+    { id: "t1", title: "Po Indru Neeyaga", artist: "ANI", src: "/music/po_indru_neeyaga.mp3" },
+  ],
 
   proposalQuestion: "Will you keep making memories with me?",
   finalSignature: "VIKY ❤️ DHEEKSHY",

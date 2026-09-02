@@ -109,7 +109,11 @@ To find your own coordinates: open [openstreetmap.org](https://www.openstreetmap
      { id: "t1", title: "Our Song", artist: "Artist Name", src: "/music/our-song.mp3" },
    ],
    ```
-3. Leave `musicTracks` as `[]` to gracefully hide the music player entirely — no missing-file errors, nothing broken. Music never autoplays; it only starts after the visitor presses play.
+3. Leave `musicTracks` as `[]` to gracefully hide the music player entirely — no missing-file errors, nothing broken.
+
+Once a track is configured, it starts playing the instant the page loads — no click needed — and then keeps playing continuously in the background — looping if there's one track, or cycling through the whole list if there's more — all the way through every chapter until she leaves. It survives chapter changes and opening/closing the settings panel (it's mounted once at the top of the app, not per-screen). She can still pause it or adjust volume from the settings menu (top-left) at any time.
+
+One unavoidable browser rule: no website can play audible sound before any interaction at all — every browser blocks that outright, there's no workaround. So the track actually starts **muted** the moment the page loads, and unmutes itself silently the instant she taps, clicks, or presses anything, anywhere on the page — it doesn't have to be a specific button. In practice that's almost always her very first tap, so it reads as "the music was already playing" rather than something starting fresh.
 
 ### Customizing colors
 Open `tailwind.config.js` → `theme.extend.colors`. The palette is built around `midnight` (deep background), `wine`/`rose` (romantic accents), `blush`, `cream`, and `gold`. You can also set `favoriteColor` in `loveStory.ts`, which is available for future custom accents.

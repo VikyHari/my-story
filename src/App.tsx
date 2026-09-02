@@ -1,6 +1,7 @@
 import React from "react";
 import { ProgressProvider } from "@/state/ProgressContext";
 import { SettingsProvider } from "@/state/SettingsContext";
+import { MusicProvider } from "@/state/MusicContext";
 import { ChapterManager } from "@/components/layout/ChapterManager";
 import { ProgressIndicator } from "@/components/layout/ProgressIndicator";
 import { SettingsBar } from "@/components/layout/SettingsBar";
@@ -14,29 +15,31 @@ export default function App() {
   return (
     <SettingsProvider>
       <ProgressProvider>
-        <div className="relative w-full h-[100dvh] text-cream font-body overflow-hidden">
-          <ScreenShake>
-            <ChapterManager />
-          </ScreenShake>
-          <FullScreenBurstLayer />
-          <SettingsBar />
-          <ProgressIndicator />
-          <FlyingKissLayer />
-          <CursorEffects />
-          <SecretToastLayer />
+        <MusicProvider>
+          <div className="relative w-full h-[100dvh] text-cream font-body overflow-hidden">
+            <ScreenShake>
+              <ChapterManager />
+            </ScreenShake>
+            <FullScreenBurstLayer />
+            <SettingsBar />
+            <ProgressIndicator />
+            <FlyingKissLayer />
+            <CursorEffects />
+            <SecretToastLayer />
 
-          <KeyboardSecret
-            keyName="l"
-            id="secret-key-l"
-            message="You found the hidden 'L' key. L is for love, obviously. ❤️"
-          />
-          <div className="fixed bottom-3 left-3 z-40">
-            <SecretHotspot
-              id="corner-heart"
-              message="A tiny hidden heart, just for you. There are more hiding around here."
+            <KeyboardSecret
+              keyName="l"
+              id="secret-key-l"
+              message="You found the hidden 'L' key. L is for love, obviously. ❤️"
             />
+            <div className="fixed bottom-3 left-3 z-40">
+              <SecretHotspot
+                id="corner-heart"
+                message="A tiny hidden heart, just for you. There are more hiding around here."
+              />
+            </div>
           </div>
-        </div>
+        </MusicProvider>
       </ProgressProvider>
     </SettingsProvider>
   );
