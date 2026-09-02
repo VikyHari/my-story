@@ -1,4 +1,4 @@
-import React, { createContext, useCallback, useContext, useMemo } from "react";
+import React, { createContext, useCallback, useContext, useEffect, useMemo } from "react";
 import { useLocalStorage } from "@/hooks/useLocalStorage";
 import { CHAPTER_ORDER, ChapterId } from "@/state/chapters";
 
@@ -42,6 +42,19 @@ const ProgressContext = createContext<ProgressContextValue | null>(null);
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [progress, setProgress] = useLocalStorage<ProgressState>("olu-progress", DEFAULT_PROGRESS);
   const [data, setDataRaw] = useLocalStorage<StoryData>("olu-data", DEFAULT_DATA);
+
+  // If a previous visit ran all the way to the very last chapter, a fresh
+  // page load should replay the whole story from the beginning rather than
+  // reopening on the final screen forever. Only checked once, right at
+  // mount, so navigating to the last chapter during a normal visit is
+  // unaffected — this only fires on an actual reload/reopen.
+  useEffect(() => {
+    if (progress.chapterIndex >= CHAPTER_ORDER.length - 1) {
+      setProgress(DEFAULT_PROGRESS);
+      setDataRaw(DEFAULT_DATA);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const clampedIndex = Math.min(Math.max(progress.chapterIndex, 0), CHAPTER_ORDER.length - 1);
   const currentChapter = CHAPTER_ORDER[clampedIndex].id;
