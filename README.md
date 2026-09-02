@@ -121,6 +121,14 @@ Open `tailwind.config.js` → `theme.extend.colors`. The palette is built around
 ### The final message
 `proposalQuestion` and `finalSignature` control the text on the final proposal screen and closing signature ("`[MY_NAME] ❤️ [HER_NAME]`").
 
+### The closing rose
+After the very last "I REALLY love you" line, a seed grows — roots, a stem, leaves, a bud, then blooms into a rose — and finishes with a two-line dedication you control:
+```ts
+roseDedicationTitle: "This is for you.",
+roseDedicationMessage: "I will love you till the end, with my last breath, for my [PET_NAME].",
+```
+Edit either line freely; there's no length limit, though shorter reads better on the smallest phones.
+
 ---
 
 ## 6. How the experience is structured

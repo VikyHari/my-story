@@ -141,4 +141,7 @@ export interface LoveStoryConfig {
 
   proposalQuestion: string;
   finalSignature: string;
+
+  roseDedicationTitle: string;
+  roseDedicationMessage: string;
 }

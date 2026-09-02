@@ -460,6 +460,10 @@ export const loveStory: LoveStoryConfig = {
 
   proposalQuestion: "Will you keep making memories with me?",
   finalSignature: "VIKY ❤️ DHEEKSHY",
+
+  // Shown after a rose finishes blooming at the very end of the experience.
+  roseDedicationTitle: "This is for you.",
+  roseDedicationMessage: "I will love you till the end, with my last breath, for my lalalalala.",
 };
 
 export default loveStory;
